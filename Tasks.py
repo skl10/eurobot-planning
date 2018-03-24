@@ -1,4 +1,7 @@
 import Constants
+from Colours import Colours
+from Coordinates import Coordinates
+from random import randint
 
 class Task():
 
@@ -7,12 +10,12 @@ class Task():
         self.performed = False
 
     def GetCurrentLocation(self):
-        pass
+        return Coordinates(1,1,1)
 
     def CoordinateMove(self,coords):
         pass
 
-    def OffsetMove(self,x,y,z):
+    def RelativeMove(self,x,y,z):
 
         # Move relative to current location
         destination = self.GetCurrentLocation()
@@ -21,7 +24,11 @@ class Task():
         destination.y += y
         destination.z += z
 
-        self.Move(destination)
+        self.CoordinateMove(destination)
+
+    def IdentifyColour(self):
+        someColour = Colours(randint(1,5))
+        return someColour
 
     def Pick(self):
         pass
@@ -65,6 +72,15 @@ class BlockTask(Task):
     def CollectBlocks(self):
         pass
 
+    def ReadBuildingPlan(self):
+
+        # Some tiny change in X used to move to the next colour on the building plan
+        shiftX = 0.1
+
+        for i in range(Constants.BUILDING_HEIGHT):
+            self.BuildingPlan[i] = self.IdentifyColour()
+            self.RelativeMove(shiftX,0,0)
+
     def Execute(self):
 
         # Navigate to the area where the Blocks are kept
@@ -77,6 +93,11 @@ class BlockTask(Task):
         # Examine the building plan
         self.CoordinateMove(Constants.BUILDING_PLAN_LOCATION)
 
+        # Try until the result is at least an array of unique colours
+        while (len(set(self.BuildingPlan)) is not Constants.BUILDING_HEIGHT):
+            self.ReadBuildingPlan()
+
+        print(self.BuildingPlan)
         self.performed = True
 
 class FlowerTask(Task):

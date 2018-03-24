@@ -9,6 +9,8 @@ INIT_BLOCK_LIMIT = 100
 INIT_FLOWER_LIMIT = 100
 INIT_SWITCH_LIMIT = 100
 
+BUILDING_HEIGHT = 3
+
 # Important Locations
 first_recup_location = Coordinates(0, 0, 0) # placeholder
 second_recup_location = Coordinates(1, 1, 1) # placeholder
