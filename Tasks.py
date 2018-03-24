@@ -67,7 +67,7 @@ class BlockTask(Task):
 
     def __init__(self, timeLimit=Constants.INIT_BLOCK_LIMIT):
         super().__init__(timeLimit)
-        self.BuildingPlan = [None, None, None]
+        self.buildingPlan = [None for _ in range(Constants.BUILDING_HEIGHT)]
 
     def CollectBlocks(self):
         pass
@@ -78,7 +78,7 @@ class BlockTask(Task):
         shiftX = 0.1
 
         for i in range(Constants.BUILDING_HEIGHT):
-            self.BuildingPlan[i] = self.IdentifyColour()
+            self.buildingPlan[i] = self.IdentifyColour()
             self.RelativeMove(shiftX,0,0)
 
     def CollectBlocks(self):
@@ -86,6 +86,17 @@ class BlockTask(Task):
         # Push as many blocks as possible to the assembly location
         self.ExtendArms()
         self.CoordinateMove(Constants.ASSEMBLY_LOCATION)
+        self.CloseArms()
+
+    def ValidBuildingPlan(self):
+
+        if (len(set(self.buildingPlan)) is not Constants.BUILDING_HEIGHT):
+            return False
+
+        if (Colours.GOLD in self.buildingPlan):
+            return False
+
+        return True
 
     def ConstructBuilding(self, depth=0):
         pass
@@ -102,7 +113,7 @@ class BlockTask(Task):
         self.CoordinateMove(Constants.BUILDING_PLAN_LOCATION)
 
         # Try until the result is at least an array of unique colours
-        while (len(set(self.BuildingPlan)) is not Constants.BUILDING_HEIGHT):
+        while (not self.ValidBuildingPlan()):
             self.ReadBuildingPlan()
 
         # Move to building area once plan is known
@@ -110,8 +121,8 @@ class BlockTask(Task):
 
         # Construct a Building
         self.ConstructBuilding(self)
+        print(self.buildingPlan)
 
-        print(self.BuildingPlan)
         self.performed = True
 
 class FlowerTask(Task):
