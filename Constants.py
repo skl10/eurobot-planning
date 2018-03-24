@@ -5,7 +5,12 @@ class Tower:
         self.position = Coordinate(x, y, z)
 
 TOTAL_TASKS = 4
+INIT_BALL_LIMIT = 100
+INIT_BLOCK_LIMIT = 100
+INIT_FLOWER_LIMIT = 100
+INIT_SWITCH_LIMIT = 100
 
+# Important Locations
 first_recup_location = Coordinate(0, 0, 0) # placeholder
 second_recup_location = Coordinate(1, 1, 1) # placeholder
 

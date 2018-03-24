@@ -14,7 +14,7 @@ class Task():
 
 class BallTask(Task):
 
-    def __init__(self, timeLimit):
+    def __init__(self, timeLimit=Constants.INIT_BALL_LIMIT):
         super().__init__(timeLimit)
 
     def Execute(self):
@@ -24,7 +24,7 @@ class BallTask(Task):
 
 class BlockTask(Task):
 
-    def __init__(self, timeLimit):
+    def __init__(self, timeLimit=Constants.INIT_BLOCK_LIMIT):
         super().__init__(timeLimit)
 
     def Execute(self):
@@ -34,7 +34,7 @@ class BlockTask(Task):
 
 class FlowerTask(Task):
 
-    def __init__(self, timeLimit):
+    def __init__(self, timeLimit=Constants.INIT_FLOWER_LIMIT):
         super().__init__(timeLimit)
 
     def Execute(self):
@@ -44,7 +44,7 @@ class FlowerTask(Task):
 
 class SwitchTask(Task):
 
-    def __init__(self, timeLimit):
+    def __init__(self, timeLimit=Constants.INIT_SWITCH_LIMIT):
         super().__init__(timeLimit)
 
     def Execute(self):

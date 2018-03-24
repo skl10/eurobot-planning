@@ -1,10 +1,11 @@
 import Constants
+from Tasks import Task
 
 class TaskCoordinator:
 
     def __init__(self):
 
-        self.tasks = [BallTask(), BlockTask(), FlowerTask(), ]
+        self.tasks = [BallTask(), BlockTask(), FlowerTask(), SwitchTask()]
         self.numIncompleteTasks = len(self.tasks)
 
     def UpdateTimeLimits(self):
