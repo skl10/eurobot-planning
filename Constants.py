@@ -1,4 +1,4 @@
-from Coordinate import Coordinate
+from Coordinates import Coordinates
 from Tower import Tower
 
 TOTAL_TASKS = 4
@@ -10,8 +10,8 @@ INIT_FLOWER_LIMIT = 100
 INIT_SWITCH_LIMIT = 100
 
 # Important Locations
-first_recup_location = Coordinate(0, 0, 0) # placeholder
-second_recup_location = Coordinate(1, 1, 1) # placeholder
+first_recup_location = Coordinates(0, 0, 0) # placeholder
+second_recup_location = Coordinates(1, 1, 1) # placeholder
 
 our_tower = Tower(2, 2, 2) # placeholder
 their_tower = Tower(2, 2, 2) # placeholder

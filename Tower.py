@@ -1,7 +1,7 @@
-from Coordinate import Coordinate
+from Coordinates import Coordinates
 
 class Tower:
 
     def __init__(self, x, y, z=0):
-        self.position = Coordinate(x, y, z)
+        self.position = Coordinates(x, y, z)
 

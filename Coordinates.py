@@ -1,4 +1,4 @@
-class Coordinate:
+class Coordinates:
 
     def __init__(self, x, y, z=0):
         # Defualt z value is zero as it's assumed most objects

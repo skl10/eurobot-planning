@@ -6,7 +6,7 @@ class Task():
         self.timeLimit = timeLimit
         self.performed = False
 
-    def GetCurrentLocation()
+    def GetCurrentLocation():
         pass
 
     def Move(coords):
