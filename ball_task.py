@@ -30,7 +30,6 @@ max_time = 1000 # placeholder: how long can we do this task for?
 
 start_time = get_time()
 
-
 while (get_time() - start_time) < max_time:
 
 # THIS DEPENDS ON HOW BALL COLLECTION, SORTING, DEPOSITING ENDS UP HAPPENING

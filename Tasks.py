@@ -9,11 +9,12 @@ class Task():
     def GetCurrentLocation():
         pass
 
-    def Move(coords):
+    def CoordinateMove(coords):
         pass
 
     def OffsetMove(x,y,z):
 
+        # Move relative to current location
         destination = self.GetCurrentLocation()
 
         destination.x += x
@@ -22,10 +23,20 @@ class Task():
 
         self.Move(destination)
 
-    def CoordinateMove():
+    def Pick():
+        pass
 
-        destination = Coordinates(x,y,z)
-        self.Move(destination)
+    def Release():
+        pass
+
+    def Place():
+        pass
+
+    def ExtendArms():
+        pass
+
+    def CloseArms():
+        pass
 
     def UpdateTimeLimit(self, newTimeLimit):
 
@@ -55,7 +66,10 @@ class BlockTask(Task):
 
     def Execute(self):
 
-        # Do stuff
+        CoordinateMove(Constants.BLOCK_LOCATION)
+        self.ExtendArms()
+        self.CoordinateMove(Constants.ASSEMBLY_LOCATION)
+
         self.performed = True
 
 class FlowerTask(Task):

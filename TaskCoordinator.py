@@ -42,5 +42,5 @@ class TaskCoordinator:
         # Change the time limits once a task has been executed
         self.UpdateTimeLimits()
 
-        # Decrease number of inomplete tasks (success assumed)
+        # Decrease number of incomplete tasks (success assumed)
         self.numIncompleteTasks -= 1
