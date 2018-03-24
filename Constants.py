@@ -1,12 +1,10 @@
-class Task(Enum):
-	WATER = 1
-	BUILDINGS = 2
-	FLOWER = 3
-	SWITCH = 4
+from Coordinate import Coordinate
 
 class Tower:
-	def __init__(self, x, y, z=0):
-		self.position = Coordinate(x, y, z)
+    def __init__(self, x, y, z=0):
+        self.position = Coordinate(x, y, z)
+
+TOTAL_TASKS = 4
 
 first_recup_location = Coordinate(0, 0, 0) # placeholder
 second_recup_location = Coordinate(1, 1, 1) # placeholder

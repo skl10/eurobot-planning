@@ -1,4 +1,3 @@
-
 from planner import get_time
 
 
@@ -14,12 +13,12 @@ def collect_balls():
 
 def deposit_balls():
 #   navigate to appropriate tower
-#   deposit balls 
+#   deposit balls
 
 our_tower = True
-# our_tower: boolean value that keeps track of whether 
-# we’re going to our tower or not (makes it easier to generalise 
-# code while navigating, and enables us to know which 
+# our_tower: boolean value that keeps track of whether
+# we’re going to our tower or not (makes it easier to generalise
+# code while navigating, and enables us to know which
 # colour balls we should deposit)
 
 #
@@ -54,7 +53,7 @@ while (get_time() - start_time) < max_time:
 	collect_balls()
 
 
-	if(dist_to_our_tower <= dist_to_their_tower): 
+	if(dist_to_our_tower <= dist_to_their_tower):
 	# [note: any reason to choose one over the other if distance is equal?]
 		our_tower = True # keeps track of which tower we're at
 		navigate_to(our_tower_location)
