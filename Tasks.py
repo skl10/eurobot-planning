@@ -81,14 +81,22 @@ class BlockTask(Task):
             self.BuildingPlan[i] = self.IdentifyColour()
             self.RelativeMove(shiftX,0,0)
 
+    def CollectBlocks(self):
+
+        # Push as many blocks as possible to the assembly location
+        self.ExtendArms()
+        self.CoordinateMove(Constants.ASSEMBLY_LOCATION)
+
+    def ConstructBuilding(self, depth=0):
+        pass
+
     def Execute(self):
 
         # Navigate to the area where the Blocks are kept
         self.CoordinateMove(Constants.BLOCK_LOCATION)
 
-        # Push as many blocks as possible to the assembly location
-        self.ExtendArms()
-        self.CoordinateMove(Constants.ASSEMBLY_LOCATION)
+        # Move blocks to assembly area
+        self.CollectBlocks()
 
         # Examine the building plan
         self.CoordinateMove(Constants.BUILDING_PLAN_LOCATION)
@@ -96,6 +104,12 @@ class BlockTask(Task):
         # Try until the result is at least an array of unique colours
         while (len(set(self.BuildingPlan)) is not Constants.BUILDING_HEIGHT):
             self.ReadBuildingPlan()
+
+        # Move to building area once plan is known
+        self.CoordinateMove(Constants.ASSEMBLY_LOCATION)
+
+        # Construct a Building
+        self.ConstructBuilding(self)
 
         print(self.BuildingPlan)
         self.performed = True
