@@ -6,13 +6,13 @@ class Task():
         self.timeLimit = timeLimit
         self.performed = False
 
-    def GetCurrentLocation():
+    def GetCurrentLocation(self):
         pass
 
-    def CoordinateMove(coords):
+    def CoordinateMove(self,coords):
         pass
 
-    def OffsetMove(x,y,z):
+    def OffsetMove(self,x,y,z):
 
         # Move relative to current location
         destination = self.GetCurrentLocation()
@@ -23,19 +23,19 @@ class Task():
 
         self.Move(destination)
 
-    def Pick():
+    def Pick(self):
         pass
 
-    def Release():
+    def Release(self):
         pass
 
-    def Place():
+    def Place(self):
         pass
 
-    def ExtendArms():
+    def ExtendArms(self):
         pass
 
-    def CloseArms():
+    def CloseArms(self):
         pass
 
     def UpdateTimeLimit(self, newTimeLimit):
@@ -60,15 +60,22 @@ class BlockTask(Task):
 
     def __init__(self, timeLimit=Constants.INIT_BLOCK_LIMIT):
         super().__init__(timeLimit)
+        self.BuildingPlan = [None, None, None]
 
     def CollectBlocks(self):
         pass
 
     def Execute(self):
 
-        CoordinateMove(Constants.BLOCK_LOCATION)
+        # Navigate to the area where the Blocks are kept
+        self.CoordinateMove(Constants.BLOCK_LOCATION)
+
+        # Push as many blocks as possible to the assembly location
         self.ExtendArms()
         self.CoordinateMove(Constants.ASSEMBLY_LOCATION)
+
+        # Examine the building plan
+        self.CoordinateMove(Constants.BUILDING_PLAN_LOCATION)
 
         self.performed = True
 
