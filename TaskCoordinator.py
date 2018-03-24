@@ -1,5 +1,6 @@
 import Constants
-from Tasks import Task
+from Tasks import *
+from time import time
 
 class TaskCoordinator:
 
@@ -7,18 +8,28 @@ class TaskCoordinator:
 
         self.tasks = [BallTask(), BlockTask(), FlowerTask(), SwitchTask()]
         self.numIncompleteTasks = len(self.tasks)
+        self.pointsEarned = 0
+        self.startTime = time()
+        self.endTime = self.startTime + Constants.TOTAL_TIME_LIMIT
+
+    def GetRemainingTime(self):
+
+        return self.endTime - time()
 
     def UpdateTimeLimits(self):
 
-        for task in self.tasks:
-            if task.performed is False
-                task.UpdateTimeLimit()
+        remainingTime = self.GetRemainingTime()
+        newTimeLimit = remainingTime / self.numIncompleteTasks
 
-    def SelectTask(self):
+        for task in self.tasks:
+            if task.performed is False:
+                task.UpdateTimeLimit(newTimeLimit)
+
+    def ExecuteNextTask(self):
 
         # Check if it's all been done
         if self.numIncompleteTasks == 0:
-            return
+            return # Return an all complete flag?
 
         # Select the first incomplete task (this may not be the best way)
         for task in self.tasks:

@@ -10,6 +10,8 @@ INIT_BLOCK_LIMIT = 100
 INIT_FLOWER_LIMIT = 100
 INIT_SWITCH_LIMIT = 100
 
+TOTAL_TIME_LIMIT = 5000
+
 # Important Locations
 first_recup_location = Coordinate(0, 0, 0) # placeholder
 second_recup_location = Coordinate(1, 1, 1) # placeholder
