@@ -1,6 +1,6 @@
 import Constants
-from Tasks import *
 from time import time
+from Tasks import *
 
 class TaskCoordinator:
 
@@ -18,6 +18,8 @@ class TaskCoordinator:
 
     def UpdateTimeLimits(self):
 
+        # Simply diving remaining time equally amoung remaining tasks
+        # Should probabaly do this differently
         remainingTime = self.GetRemainingTime()
         newTimeLimit = remainingTime / self.numIncompleteTasks
 
@@ -40,5 +42,5 @@ class TaskCoordinator:
         # Change the time limits once a task has been executed
         self.UpdateTimeLimits()
 
-        # Decreate number of inomplete tasks
+        # Decrease number of inomplete tasks (success assumed)
         self.numIncompleteTasks -= 1

@@ -1,16 +1,13 @@
 from Coordinate import Coordinate
-
-class Tower:
-    def __init__(self, x, y, z=0):
-        self.position = Coordinate(x, y, z)
+from Tower import Tower
 
 TOTAL_TASKS = 4
+
+TOTAL_TIME_LIMIT = 5000
 INIT_BALL_LIMIT = 100
 INIT_BLOCK_LIMIT = 100
 INIT_FLOWER_LIMIT = 100
 INIT_SWITCH_LIMIT = 100
-
-TOTAL_TIME_LIMIT = 5000
 
 # Important Locations
 first_recup_location = Coordinate(0, 0, 0) # placeholder

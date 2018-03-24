@@ -2,9 +2,30 @@ import Constants
 
 class Task():
 
-    def __init__(self, timeLimit):
+    def __init__(self, timeLimit=Constants.TOTAL_TIME_LIMIT/Constants.TOTAL_TASKS):
         self.timeLimit = timeLimit
         self.performed = False
+
+    def GetCurrentLocation()
+        pass
+
+    def Move(coords):
+        pass
+
+    def OffsetMove(x,y,z):
+
+        destination = self.GetCurrentLocation()
+
+        destination.x += x
+        destination.y += y
+        destination.z += z
+
+        self.Move(destination)
+
+    def CoordinateMove():
+
+        destination = Coordinates(x,y,z)
+        self.Move(destination)
 
     def UpdateTimeLimit(self, newTimeLimit):
 
@@ -28,6 +49,9 @@ class BlockTask(Task):
 
     def __init__(self, timeLimit=Constants.INIT_BLOCK_LIMIT):
         super().__init__(timeLimit)
+
+    def CollectBlocks(self):
+        pass
 
     def Execute(self):
 
