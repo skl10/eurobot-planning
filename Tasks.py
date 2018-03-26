@@ -45,6 +45,9 @@ class Task():
     def CloseArms(self):
         pass
 
+    def Rotate(self, angle):
+        pass
+
     def UpdateTimeLimit(self, newTimeLimit):
 
         # If certain tasks are completed earlier/later than expected then the timelimit is updated
@@ -68,9 +71,6 @@ class BlockTask(Task):
     def __init__(self, timeLimit=Constants.INIT_BLOCK_LIMIT):
         super().__init__(timeLimit)
         self.buildingPlan = [None for _ in range(Constants.BUILDING_HEIGHT)]
-
-    def CollectBlocks(self):
-        pass
 
     def ReadBuildingPlan(self):
 
@@ -98,6 +98,29 @@ class BlockTask(Task):
 
         return True
 
+    def RetrieveBlock(self, colour):
+        # Pick a block based on its colour
+        pass
+
+    def AnyRetrieveBlock(self, colour):
+        # Pick the first visible block
+        pass
+
+    def LookForBlock(self, colour):
+
+        if (self.BlockAvaliable(colour)):
+            # Pick the block with the correct colour
+            self.RetrieveBlock(colour))
+        else if (self.BlockAvaliable(Colours.GOLD)):
+            # Pick the gold block
+            RetrieveBlock(Colours.GOLD)
+        else if (self.AnyBlockAvaliable()):
+            # Pick whatever block is there
+            AnyRetrieveBlock()
+        else:
+            # Can't find anything
+            pass
+
     def ConstructBuilding(self, depth=0):
         pass
 
@@ -115,14 +138,18 @@ class BlockTask(Task):
         # Try until the result is at least an array of unique colours
         while (not self.ValidBuildingPlan()):
             self.ReadBuildingPlan()
+            # self.MoveBackToFaceFirstSquareOfBuildingPlan() ?
+
+        # Just to see what happened
+        print(self.buildingPlan)
 
         # Move to building area once plan is known
         self.CoordinateMove(Constants.ASSEMBLY_LOCATION)
 
         # Construct a Building
         self.ConstructBuilding(self)
-        print(self.buildingPlan)
 
+        # Assume success
         self.performed = True
 
 class FlowerTask(Task):
