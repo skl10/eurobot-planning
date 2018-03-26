@@ -110,11 +110,11 @@ class BlockTask(Task):
 
         if (self.BlockAvaliable(colour)):
             # Pick the block with the correct colour
-            self.RetrieveBlock(colour))
-        else if (self.BlockAvaliable(Colours.GOLD)):
+            self.RetrieveBlock(colour)
+        elif (self.BlockAvaliable(Colours.GOLD)):
             # Pick the gold block
             RetrieveBlock(Colours.GOLD)
-        else if (self.AnyBlockAvaliable()):
+        elif (self.AnyBlockAvaliable()):
             # Pick whatever block is there
             AnyRetrieveBlock()
         else:
