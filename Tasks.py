@@ -36,7 +36,10 @@ class Task():
     def Release(self):
         pass
 
-    def Place(self):
+    def Place(self, depth):
+        """ Place a block at given depth (0 = ground, 1 = on top of 1 other block, etc.
+        We might want to change this to be a more specific x y z location
+        """
         pass
 
     def ExtendArms(self):
@@ -122,7 +125,14 @@ class BlockTask(Task):
             pass
 
     def ConstructBuilding(self, depth=0):
-        pass
+        
+        depth = 0
+
+        # simplified for now
+        for i in range(1, Constants.BUILDING_HEIGHT):
+            RetrieveBlock(buildingColours[i])
+            Place(depth) # CHANGE THIS TO REFLECT WHERE THE BLOCK IS
+            depth++
 
     def Execute(self):
 
