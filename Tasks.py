@@ -126,12 +126,6 @@ class BlockTask(Task):
 
     def Execute(self):
 
-        # Navigate to the area where the Blocks are kept
-        self.CoordinateMove(Constants.BLOCK_LOCATION)
-
-        # Move blocks to assembly area
-        self.CollectBlocks()
-
         # Examine the building plan
         self.CoordinateMove(Constants.BUILDING_PLAN_LOCATION)
 
@@ -142,6 +136,12 @@ class BlockTask(Task):
 
         # Just to see what happened
         print(self.buildingPlan)
+
+        # Navigate to the area where the Blocks are kept
+        self.CoordinateMove(Constants.BLOCK_LOCATION)
+
+        # Move blocks to assembly area
+        self.CollectBlocks()
 
         # Move to building area once plan is known
         self.CoordinateMove(Constants.ASSEMBLY_LOCATION)
